@@ -7,12 +7,12 @@
 
 ## USAGE
 
-1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-adt-atac-10x/tree/master/container/sc-adt-atac-10x.v6
+1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-atac-10x/tree/master/container/ctg-sc-atac-10x
 2. Edit your samplesheet to match the example samplesheet. See section `SampleSheet` below
 3. Edit the nextflow.config file to fit your project and system. 
 4. Run pipeline 
 ```
-nohup nextflow run pipe-sc-adt-atac-10x.nf > log.pipe-sc-adt-atac-10x.txt &
+nohup nextflow run pipe-sc-atac-10x.nf > log.pipe-sc-atac-10x.txt &
 ```
 
 ## Input
@@ -21,12 +21,12 @@ nohup nextflow run pipe-sc-adt-atac-10x.nf > log.pipe-sc-adt-atac-10x.txt &
 
 ### Pipeline steps:
 
-Cellranger version: cellranger v6.0 
+Cellranger version: cellranger atac v2.0.0 
 
-* `Demultiplexing` (cellranger mkfastq): Converts raw basecalls to fastq, and demultiplex samples based on index (https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/6.0/using/mkfastq).
+* `Demultiplexing` (cellranger mkfastq): Converts raw basecalls to fastq, and demultiplex samples based on index (https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/using/mkfastq).
 * `FastQC`: FastQC calculates quality metrics on raw sequencing reads (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/). MultiQC summarizes FastQC reports into one document (https://multiqc.info/).
-* `Align` + `Counts` (cellranger count): Aligns fastq files to reference genome, counts genes for each cell/barcode, perform secondary analysis such as clustering and generates the cloupe files (https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/6.0/using/count).
-* `Aggregation` (cellranger aggr): Automatically creates the input csv pointing to molecule_info.h5 files for each sample to be aggregated and executes aggregation (https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/aggregate). This is only run if there is more than one sample pr project.
+* `Align` + `Counts` (cellranger count): Aligns fastq files to reference genome, counts genes for each cell/barcode, perform secondary analysis such as clustering and generates the cloupe files (https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/using/count).
+* `Aggregation` (cellranger aggr): Automatically creates the input csv pointing to molecule_info.h5 files for each sample to be aggregated and executes aggregation (https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/using/aggr). This is only run if there is more than one sample pr project.
 * `Cellranger count metrics` (bin/ctg-sc-count-metrics-concat.py): Collects main count metrics (#cells and #reads/cell etc.) from each sample and collect in table
 * `multiQC`: Compile fastQC and cellranger count metrics in multiqc report
 * `md5sum`: md5sum of all generated files
@@ -39,10 +39,10 @@ Cellranger version: cellranger v6.0
         * fastqc output (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
         * multiqc output: Summarizing FastQC output and demultiplexing (https://multiqc.info/)
     * `fastq`: Contains raw fastq files from cellranger mkfastq.
-    * `count-cr`: Cellranger count output. Here you find gene/cell count matrices, secondary analysis output, and more. See (https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/6.0/using/count) for more information on the output files.
+    * `count-cr`: Cellranger count output. Here you find gene/cell count matrices, secondary analysis output, and more. See (https://support.10xgenomics.com/single-cell-atac/software/pipelines/latest/using/count) for more information on the output files.
     * `summaries`: 
         * web-summary files which provide an overview of essential metrics from the 10x run. 
-        * cloupe files which can be used to explore the data interactively in the Loupe browser (https://support.10xgenomics.com/single-cell-gene-expression/software/visualization/latest/what-is-loupe-cell-browser)  
+        * cloupe files which can be used to explore the data interactively in the Loupe browser (https://support.10xgenomics.com/single-cell-atac/software/visualization/latest/what-is-loupe-cell-browser)  
     * `aggregate`:
         * Output from cellranger aggregation. This is only run if there is more than one sample pr project.
     * `ctg-md5.PROJ_ID.txt`: text file with md5sum recursively from output dir root    
@@ -72,7 +72,7 @@ The nf-pipeline takes the following Columns from samplesheet to use in channels:
 
 
 ### Container
-https://github.com/perllb/ctg-containers/tree/main/sc-atac-10x/sc-atac-10x.v6
+
 
 ### Custom genome 
 
