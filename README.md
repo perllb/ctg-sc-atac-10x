@@ -7,12 +7,12 @@
 
 ## USAGE
 
-1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-adt-rna-10x/tree/master/container/sc-adt-rna-10x.v6
+1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-adt-atac-10x/tree/master/container/sc-adt-atac-10x.v6
 2. Edit your samplesheet to match the example samplesheet. See section `SampleSheet` below
 3. Edit the nextflow.config file to fit your project and system. 
 4. Run pipeline 
 ```
-nohup nextflow run pipe-sc-adt-rna-10x.nf > log.pipe-sc-adt-rna-10x.txt &
+nohup nextflow run pipe-sc-adt-atac-10x.nf > log.pipe-sc-adt-atac-10x.txt &
 ```
 
 ## Input
@@ -52,12 +52,12 @@ Cellranger version: cellranger v6.0
 
 Note: no header! only the rows shown below, starting with the column names.
 
- | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | agg | nuclei | 
- | --- | --- | --- | --- | --- | --- | --- | 
- | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | human | y | n | 
- | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | human | y | n | 
- | Sample1 | S1 | SI-GA-C9 | proj_2021_013 | mouse | n | y | 
- | Sample2 | S23 | SI-GA-C9 | proj_2021_013 | mouse | n | y |
+ | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | agg | 
+ | --- | --- | --- | --- | --- | --- |
+ | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | human | y |  
+ | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | human | y |  
+ | Sample1 | S1 | SI-GA-C9 | proj_2021_013 | mouse | n | 
+ | Sample2 | S23 | SI-GA-C9 | proj_2021_013 | mouse | n | 
 
 ```
 
@@ -68,12 +68,11 @@ The nf-pipeline takes the following Columns from samplesheet to use in channels:
 - `Sample_Project` (Project ID)
 - `Sample_Species` (human/mouse/custom - if custom, see below how to edit the config file)
 - `agg` ('y' if the sample should be aggregated with other samples of the same Sample_Project that also have 'y' agg)
-- `nuclei` ('y' if the sample is nuclei) 
 ```
 
 
 ### Container
-https://github.com/perllb/ctg-containers/tree/main/sc-rna-10x/sc-rna-10x.v6
+https://github.com/perllb/ctg-containers/tree/main/sc-atac-10x/sc-atac-10x.v6
 
 ### Custom genome 
 
@@ -82,10 +81,10 @@ If custom genome (not hg38 or mm10) is used
 1. Set "Sample_Species" column to 'custom' in samplesheet:
 
 Example:
- | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | agg | nuclei | 
- | --- | --- | --- | --- | --- | --- | --- | 
- | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | **custom** | y | n | 
- | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | **custom** | y | n | 
+ | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | agg | 
+ | --- | --- | --- | --- | --- | --- | 
+ | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | **custom** | y |   
+ | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | **custom** | y |  
  
  2. In nextflow.config, set 
  `custom_genome=/PATH/TO/CUSTOMGENOME`
