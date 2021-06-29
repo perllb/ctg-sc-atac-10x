@@ -1,5 +1,5 @@
-# ctg-sc-rna-10x 
-## Nextflow pipeline for preprocessing of 10x chromium sc-RNA data with cellranger. 
+# ctg-sc-atac-10x 
+## Nextflow pipeline for preprocessing of 10x chromium sc-ATAC data with cellranger. 
 
 - Designed to handle multiple projects in one sequencing run (but also works with only one project)
 - Supports mm10 and hg38 references, but can also be run with custom reference genome and annotation (must be added via nextflow.config). See custom genome below.
