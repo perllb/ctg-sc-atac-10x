@@ -5,6 +5,9 @@
 - Supports mm10 and hg38 references, but can also be run with custom reference genome and annotation (must be added via nextflow.config). See custom genome below.
 - Supports nuclei samples
 
+## Dependencies
+- Singularity container 
+- 
 ## USAGE
 
 1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-atac-10x/tree/master/container/ctg-sc-atac-10x
@@ -52,12 +55,12 @@ Cellranger version: cellranger atac v2.0.0
 
 Note: no header! only the rows shown below, starting with the column names.
 
- | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | agg | 
- | --- | --- | --- | --- | --- | --- |
- | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | human | y |  
- | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | human | y |  
- | Sample1 | S1 | SI-GA-C9 | proj_2021_013 | mouse | n | 
- | Sample2 | S23 | SI-GA-C9 | proj_2021_013 | mouse | n | 
+ | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | 
+ | --- | --- | --- | --- | --- | 
+ | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | human | 
+ | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | human | 
+ | Sample1 | S1 | SI-GA-C9 | proj_2021_013 | mouse | 
+ | Sample2 | S23 | SI-GA-C9 | proj_2021_013 | mouse |
 
 ```
 
@@ -67,7 +70,7 @@ The nf-pipeline takes the following Columns from samplesheet to use in channels:
 - `Index` (Must use index ID!)
 - `Sample_Project` (Project ID)
 - `Sample_Species` (human/mouse/custom - if custom, see below how to edit the config file)
-- `agg` ('y' if the sample should be aggregated with other samples of the same Sample_Project that also have 'y' agg)
+
 ```
 
 
@@ -81,10 +84,10 @@ If custom genome (not hg38 or mm10) is used
 1. Set "Sample_Species" column to 'custom' in samplesheet:
 
 Example:
- | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | agg | 
- | --- | --- | --- | --- | --- | --- | 
- | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | **custom** | y |   
- | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | **custom** | y |  
+ | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | 
+ | --- | --- | --- | --- | --- | 
+ | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | **custom** | 
+ | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | **custom** | 
  
  2. In nextflow.config, set 
  `custom_genome=/PATH/TO/CUSTOMGENOME`
