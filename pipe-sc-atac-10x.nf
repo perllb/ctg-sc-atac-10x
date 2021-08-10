@@ -5,7 +5,6 @@ runfolder = params.runfolder
 basedir = params.basedir
 metaid = params.metaid
 
-
 // Output dirs
 outdir = params.outdir
 fqdir = params.fqdir
@@ -196,7 +195,7 @@ process count {
 	     --sample=$sid \\
              --project=$projid \\
 	     --reference=\$genome \\
-             --localcores=20 --localmem=110 
+             --localcores=19 --localmem=110
 
         mkdir -p ${outdir}
         mkdir -p ${outdir}/${projid}
@@ -279,7 +278,7 @@ process summarize_count {
 	python $basedir/bin/ctg-sc-atac-count-metrics-concat.py -i ${outdir}/${projid}/ -o ${outdir}/${projid}/qc/cellranger
 
 	# Copy to summaries delivery folder
-	cp ${outdir}/${projid}/qc/cellranger/ctg-cellranger-count-summary_metrics.csv ${outdir}/${projid}/summaries/web-summaries/
+	cp ${outdir}/${projid}/qc/cellranger/ctg-cellranger-atac-count-summary_metrics.csv ${outdir}/${projid}/summaries/web-summaries/
 	"""
 }
 	
