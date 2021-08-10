@@ -6,8 +6,14 @@
 - Supports nuclei samples
 
 ## Dependencies
-- Singularity container 
-- 
+- nextflow version 19.04.1.5072
+- Singularity (v 3.7.0-1.el7)
+- java (openjdk version "10.0.2" 2018-07-17)
+- OpenJDK Runtime Environment Zulu10.3+5 (build 10.0.2+13)
+- OpenJDK 64-Bit Server VM Zulu10.3+5 (build 10.0.2+13, mixed mode)
+- Singularity container (https://github.com/perllb/ctg-sc-atac-10x/blob/main/container/Singularity_sc-atac-10x-builder)
+- Cellranger 10x ATAC or ARC references (e.g. refdata-cellranger-arc-GRCh38-2020-A-2.0.0 and refdata-cellranger-arc-mm10-2020-A-2.0.0)
+
 ## USAGE
 
 1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-atac-10x/tree/master/container/ctg-sc-atac-10x
