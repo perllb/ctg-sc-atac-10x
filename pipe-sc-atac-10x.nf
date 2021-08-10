@@ -261,7 +261,7 @@ process summarize_count {
 	tag "${projid}"
 
 	input:
-	set metrics from count_metrics.collect()
+	val metrics from count_metrics.collect()
 	val projid from count_summarize 
 
 	output:
