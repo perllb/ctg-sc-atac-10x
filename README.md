@@ -17,7 +17,9 @@ nohup nextflow run pipe-sc-atac-10x.nf > log.pipe-sc-atac-10x.txt &
 
 ## Input files
 
-1. Samplesheet (`CTG_SampleSheet.sc-atac-10x.csv`)
+The following files must be in the runfolder to start pipeline successfully.
+
+1. Samplesheet  (`CTG_SampleSheet.sc-atac-10x.csv`)
 
 ### Samplesheet requirements:
 
