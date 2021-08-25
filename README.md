@@ -47,7 +47,7 @@ Note: no header! only the rows shown below, starting with the column names.
 - `Sample_Species` : Only 'human'/'mouse'/'custom' are accepted. If species is not human or mouse, set 'custom'. This custom reference genome has to be specified in the nextflow config file. See below how to edit the config file.
 
 
-### Pipeline steps:
+## Pipeline steps:
 
 Cellranger version: cellranger atac v2.0.0 
 
@@ -60,7 +60,7 @@ Cellranger version: cellranger atac v2.0.0
 * `md5sum`: md5sum of all generated files
 
 
-### Output:
+## Output:
 * ctg-PROJ_ID-output
     * `qc`: Quality control output. 
         * cellranger metrics: Main metrics summarising the count / cell output 
@@ -79,10 +79,10 @@ Cellranger version: cellranger atac v2.0.0
 
 
 
-### Container
+## Container
 
 
-### Custom genome 
+## Custom genome 
 
 If custom genome (not hg38 or mm10) is used
 
