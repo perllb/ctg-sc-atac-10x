@@ -5,15 +5,6 @@
 - Supports mm10 and hg38 references, but can also be run with custom reference genome and annotation (must be added via nextflow.config). See custom genome below.
 - Supports nuclei samples
 
-## Dependencies
-- nextflow version 19.04.1.5072
-- Singularity (v 3.7.0-1.el7)
-- java (openjdk version "10.0.2" 2018-07-17)
-- OpenJDK Runtime Environment Zulu10.3+5 (build 10.0.2+13)
-- OpenJDK 64-Bit Server VM Zulu10.3+5 (build 10.0.2+13, mixed mode)
-- Singularity container (https://github.com/perllb/ctg-sc-atac-10x/blob/main/container/Singularity_sc-atac-10x-builder)
-- Cellranger 10x ATAC or ARC references (e.g. refdata-cellranger-arc-GRCh38-2020-A-2.0.0 and refdata-cellranger-arc-mm10-2020-A-2.0.0)
-
 ## USAGE
 
 1. Clone and build the Singularity container for this pipeline: https://github.com/perllb/ctg-sc-atac-10x/tree/master/container/ctg-sc-atac-10x
@@ -46,9 +37,9 @@ Note: Must be in comma-separated values format (.csv)
 - `Sample_Project` : Project ID. E.g. 2021_033, 2021_192.
 - `Sample_Species` : Only 'human'/'mouse'/'custom' are accepted. If species is not human or mouse, set 'custom'. This custom reference genome has to be specified in the nextflow config file. See below how to edit the config file.
 
-### CSV format templates
+### Samplesheet template
 
-1. Samplesheet `CTG_SampleSheet.sc-atac-10x.csv`
+- Samplesheet name `CTG_SampleSheet.sc-atac-10x.csv`
 ```
 Sample_ID,index,Sample_Project,Sample_Species 
 Si1,Sn1,SI-GA-D9,2021_012,human 
@@ -111,3 +102,13 @@ Example:
 
 You can use this script to add custom genes to the cellranger ref
 https://github.com/perllb/ctg-cellranger-add2ref
+
+
+## Dependencies
+- nextflow version 19.04.1.5072
+- Singularity (v 3.7.0-1.el7)
+- java (openjdk version "10.0.2" 2018-07-17)
+- OpenJDK Runtime Environment Zulu10.3+5 (build 10.0.2+13)
+- OpenJDK 64-Bit Server VM Zulu10.3+5 (build 10.0.2+13, mixed mode)
+- Singularity container (https://github.com/perllb/ctg-sc-atac-10x/blob/main/container/Singularity_sc-atac-10x-builder)
+- Cellranger 10x ATAC or ARC references (e.g. refdata-cellranger-arc-GRCh38-2020-A-2.0.0 and refdata-cellranger-arc-mm10-2020-A-2.0.0)
