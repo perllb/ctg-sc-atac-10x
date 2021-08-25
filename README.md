@@ -47,11 +47,13 @@ Note: Must be in comma-separated values format (.csv)
 - `Sample_Species` : Only 'human'/'mouse'/'custom' are accepted. If species is not human or mouse, set 'custom'. This custom reference genome has to be specified in the nextflow config file. See below how to edit the config file.
 
 #### CSV format template
+```
 Sample_ID,index,Sample_Project,Sample_Species 
 Si1,Sn1,SI-GA-D9,2021_012,human 
 Si2,Sn2,SI-GA-H9,2021_012,human 
 Sample1,S1,SI-GA-C9,2021_013,mouse 
 Sample2,S23,SI-GA-C9,2021_013,mouse
+``` 
 
 ## Pipeline steps:
 
