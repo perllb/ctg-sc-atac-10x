@@ -26,7 +26,7 @@ nohup nextflow run pipe-sc-atac-10x.nf > log.pipe-sc-atac-10x.txt &
 
 ## Input files
 
-1. Samplesheet (CTG_SampleSheet.sc-atac-10x.csv)
+1. Samplesheet (`CTG_SampleSheet.sc-atac-10x.csv`)
 
 ### Samplesheet requirements:
 
@@ -46,7 +46,9 @@ Note: Must be in comma-separated values format (.csv)
 - `Sample_Project` : Project ID. E.g. 2021_033, 2021_192.
 - `Sample_Species` : Only 'human'/'mouse'/'custom' are accepted. If species is not human or mouse, set 'custom'. This custom reference genome has to be specified in the nextflow config file. See below how to edit the config file.
 
-#### CSV format template
+### CSV format templates
+
+1. Samplesheet (`CTG_SampleSheet.sc-atac-10x.csv`)
 ```
 Sample_ID,index,Sample_Project,Sample_Species 
 Si1,Sn1,SI-GA-D9,2021_012,human 
