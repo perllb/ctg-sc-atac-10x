@@ -24,9 +24,28 @@
 nohup nextflow run pipe-sc-atac-10x.nf > log.pipe-sc-atac-10x.txt &
 ```
 
-## Input
+## Input files
 
-- Samplesheet (see `SampleSheet` section below)
+1. Samplesheet (CTG_SampleSheet.sc-atac-10x.csv)
+
+### Samplesheet requirements:
+
+Note: no header! only the rows shown below, starting with the column names.
+
+ | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | 
+ | --- | --- | --- | --- | --- | 
+ | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | human | 
+ | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | human | 
+ | Sample1 | S1 | SI-GA-C9 | proj_2021_013 | mouse | 
+ | Sample2 | S23 | SI-GA-C9 | proj_2021_013 | mouse |
+
+- The nf-pipeline takes the following Columns from samplesheet to use in channels:
+
+- `Sample_ID` : ID of sample. Sample_ID can only contain a-z, A-Z and "_".  E.g space and hyphen ("-") are not allowed! If 'Sample_Name' is present, it will be ignored. 
+- `index` : Must use index ID (10x ID) if dual index. For single index, the index sequence works too.
+- `Sample_Project` : Project ID. E.g. 2021_033, 2021_192.
+- `Sample_Species` : Only 'human'/'mouse'/'custom' are accepted. If species is not human or mouse, set 'custom'. This custom reference genome has to be specified in the nextflow config file. See below how to edit the config file.
+
 
 ### Pipeline steps:
 
@@ -57,27 +76,7 @@ Cellranger version: cellranger atac v2.0.0
     * `ctg-md5.PROJ_ID.txt`: text file with md5sum recursively from output dir root    
 
 
-### Samplesheet requirements:
 
-Note: no header! only the rows shown below, starting with the column names.
-
- | Sample_ID | Sample_Name | index | Sample_Project | Sample_Species | 
- | --- | --- | --- | --- | --- | 
- | Si1 | Sn1 | SI-GA-D9 | proj_2021_012 | human | 
- | Si2 | Sn2 | SI-GA-H9 | proj_2021_012 | human | 
- | Sample1 | S1 | SI-GA-C9 | proj_2021_013 | mouse | 
- | Sample2 | S23 | SI-GA-C9 | proj_2021_013 | mouse |
-
-```
-
-The nf-pipeline takes the following Columns from samplesheet to use in channels:
-
-- `Sample_ID` ('Sample_Name' will be ignored)
-- `Index` (Must use index ID!)
-- `Sample_Project` (Project ID)
-- `Sample_Species` (human/mouse/custom - if custom, see below how to edit the config file)
-
-```
 
 
 ### Container
